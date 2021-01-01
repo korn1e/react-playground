@@ -6,3 +6,5 @@ Add styling on components
 
 Rendering content conditionally.  
 Rendering content conditionally (preferred way).
+
+outputting list
