@@ -13,7 +13,8 @@ class App extends Component {
             {name: 'Bina', age:38},
             {name: 'Wira', age:34}
         ],
-        otherData: 'other value'
+        otherData: 'other value',
+        showPersons: false
     };
 
     switchNameHandler = (newName) => {
@@ -41,6 +42,11 @@ class App extends Component {
         });
     }
 
+    togglePersonsHandler = () => {
+        const isShown = this.state.showPersons;
+        this.setState({showPersons: !isShown});
+    }
+
     render() {
 
         const btnInlineStyle = {
@@ -55,25 +61,29 @@ class App extends Component {
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
             // passing method reference between components using "click" property
-            // 2 ways for passing argument on referenced method:
-            // 1: use anonymous function -> inefficient (performance)
-            // 2: use bind -> RECOMMENDED!!!
             <div className="App">
                 <h1>Hi, I'm a react app</h1>
                 <button
                     style={btnInlineStyle}
-                    onClick={() => this.switchNameHandler('Ajigile')}>Change Data</button>
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age}/>
-                <Person
-                    name={this.state.persons[1].name}
-                    age={this.state.persons[1].age}
-                    click={this.switchNameHandler.bind(this, 'Aji Perdana')}
-                    changed={this.nameChangeHandler}>My hobby is eat a lot</Person>
-                <Person
-                    name={this.state.persons[2].name}
-                    age={this.state.persons[2].age}/>
+                    onClick={this.togglePersonsHandler}>Change Data</button>
+                {
+                    this.state.showPersons ?
+                    <div>
+                        <Person
+                            name={this.state.persons[0].name}
+                            age={this.state.persons[0].age}/>
+                        <Person
+                            name={this.state.persons[1].name}
+                            age={this.state.persons[1].age}
+                            click={this.switchNameHandler.bind(this, 'Aji Perdana')}
+                            changed={this.nameChangeHandler}>My hobby is eat a lot</Person>
+                        <Person
+                            name={this.state.persons[2].name}
+                            age={this.state.persons[2].age}/>
+                    </div> : null
+                }
+
+
             </div>
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
