@@ -17,14 +17,21 @@ class App extends Component {
         showPersons: false
     };
 
-    nameChangeHandler = (event) => {
-        this.setState({
-            persons: [
-                {name: 'Aji', age:39},
-                {name: event.target.value, age:38},
-                {name: 'Wira', age:34}
-            ]
-        });
+    nameChangeHandler = (event, id) => {
+        // equivalent to (java lambda): stream, find first, index
+        const personIndex = this.state.persons.findIndex(person => person.id === id);
+
+        //create a copy from immutable object
+        const person = {
+            ...this.state.persons[personIndex]
+        };
+        person.name = event.target.value;
+
+        //create a copy from immutable array object
+        const persons = [...this.state.persons];
+        persons[personIndex] = person;
+
+        this.setState({ persons: persons });
     }
 
     deletePersonHandler = (personIndex) => {
@@ -66,7 +73,8 @@ class App extends Component {
                             click={() => this.deletePersonHandler(index)}
                             name={person.name}
                             age={person.age}
-                            key={person.id}/>
+                            key={person.id}
+                            changed={(event) => this.nameChangeHandler(event, person.id)} />
                     })}
                 </div>
             );

@@ -12,3 +12,5 @@ outputting list
 safely update state immutably
 
 lists & keys
+
+flexible lists, safely modify imutable state object
