@@ -28,8 +28,17 @@ class App extends Component {
     }
 
     deletePersonHandler = (personIndex) => {
-        const persons = this.state.persons;
+        // not a recommended way of modifying state object
+        /*
+        const persons = this.state.persons.slice();
         persons.splice(personIndex, 1);
+        this.setState({persons: persons});
+        */
+
+        // RECOMMENDED way
+        //const persons = this.state.persons.slice();   // option1: COPY the full object and return new one
+        const persons = [...this.state.persons];        // option2: COPY the full object using spread operator (...) -> more modern way
+        persons.splice(personIndex, 1); // safely update the new object
         this.setState({persons: persons});
     }
 

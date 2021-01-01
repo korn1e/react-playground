@@ -8,3 +8,5 @@ Rendering content conditionally.
 Rendering content conditionally (preferred way).
 
 outputting list
+
+safely update state immutably
