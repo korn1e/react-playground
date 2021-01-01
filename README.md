@@ -1,1 +1,1 @@
-Basic React example
+Basic React example.

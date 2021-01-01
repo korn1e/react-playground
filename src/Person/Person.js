@@ -4,8 +4,9 @@ import React from "react";
 const person = (props) => {
     return (
         // must return single root element
+        // passing method reference between components using "click" property
         <div>
-            <p>I'm {props.name}, and I'm {props.age} years old</p>
+            <p onClick={props.click}>I'm {props.name}, and I'm {props.age} years old</p>
             <p>{props.children}</p>
         </div>
     );
