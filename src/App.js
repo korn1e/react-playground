@@ -8,11 +8,12 @@ class App extends Component {
 
     //built-in property
     state = {
-      persons: [
-          {name: 'Aji', age:39},
-          {name: 'Bina', age:38},
-          {name: 'Wira', age:34}
-      ]
+        persons: [
+            {name: 'Aji', age:39},
+            {name: 'Bina', age:38},
+            {name: 'Wira', age:34}
+        ],
+        otherData: 'other value'
     };
 
     switchNameHandler = (newName) => {
@@ -28,6 +29,16 @@ class App extends Component {
                 {name: 'Bina', age:38},
                 {name: 'Wira', age:22}
             ]});
+    }
+
+    nameChangeHandler = (event) => {
+        this.setState({
+            persons: [
+                {name: 'Aji', age:39},
+                {name: event.target.value, age:38},
+                {name: 'Wira', age:34}
+            ]
+        });
     }
 
     render() {
@@ -47,7 +58,8 @@ class App extends Component {
                 <Person
                     name={this.state.persons[1].name}
                     age={this.state.persons[1].age}
-                    click={this.switchNameHandler.bind(this, 'Aji Perdana')}>My hobby is eat a lot</Person>
+                    click={this.switchNameHandler.bind(this, 'Aji Perdana')}
+                    changed={this.nameChangeHandler}>My hobby is eat a lot</Person>
                 <Person
                     name={this.state.persons[2].name}
                     age={this.state.persons[2].age}/>
