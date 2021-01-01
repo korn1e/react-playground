@@ -42,6 +42,15 @@ class App extends Component {
     }
 
     render() {
+
+        const btnInlineStyle = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer'
+        };
+
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
@@ -51,7 +60,9 @@ class App extends Component {
             // 2: use bind -> RECOMMENDED!!!
             <div className="App">
                 <h1>Hi, I'm a react app</h1>
-                <button onClick={() => this.switchNameHandler('Ajigile')}>Change Data</button>
+                <button
+                    style={btnInlineStyle}
+                    onClick={() => this.switchNameHandler('Ajigile')}>Change Data</button>
                 <Person
                     name={this.state.persons[0].name}
                     age={this.state.persons[0].age}/>
