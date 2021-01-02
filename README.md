@@ -1,16 +1,8 @@
-Basic React example.
+Styling React Component & Element.
 
-Adding 2-way binding (nameChangeHandler - Person)
+Dynamically set style properties:  
+- set green color to show person data.  
+- set red color to hide person data.
 
-Add styling on components
-
-Rendering content conditionally.  
-Rendering content conditionally (preferred way).
-
-outputting list
-
-safely update state immutably
-
-lists & keys
-
-flexible lists, safely modify imutable state object
+Setting class name dynamically:  
+-> check App.css

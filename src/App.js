@@ -57,7 +57,7 @@ class App extends Component {
     render() {
 
         const btnInlineStyle = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
@@ -78,6 +78,15 @@ class App extends Component {
                     })}
                 </div>
             );
+            btnInlineStyle.backgroundColor = 'red';
+        }
+
+        const classNames = [];
+        if(this.state.persons.length <= 2){
+            classNames.push('red'); // classNames = ['red']
+        }
+        if(this.state.persons.length <= 1) {
+            classNames.push('bold'); // classNames = ['red', 'bold']
         }
 
         return (
@@ -85,6 +94,7 @@ class App extends Component {
             // lower case 1st letter usually for reserved/internal component
             <div className="App">
                 <h1>Hi, I'm a react app</h1>
+                <p className={classNames.join(' ')}>This is really working!</p>
                 <button
                     style={btnInlineStyle}
                     onClick={this.togglePersonsHandler}>Change Data</button>
