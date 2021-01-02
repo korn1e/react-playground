@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import styled from 'styled-components';
+
 import Person from './Person/Person';
 
-//styled way to define component (with props)
-const StyledButton = styled.button`
-    background-color: ${props => props.ext ? 'red' : 'green'};
-    color: white;
-    font: inherit;
-    border: 1px solid blue;
-    padding: 8px;
-    cursor: pointer;
-    &:hover {
-        background-color: ${props => props.ext ? 'salmon' : 'lightgreen'};;
-        color: black;
-    }
-`;
 
 class App extends Component {
 
@@ -97,13 +84,10 @@ class App extends Component {
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
-            //use the defined (styled) component, and pass argument
             <div className="App">
                 <h1>Hi, I'm a react app</h1>
                 <p className={classNames.join(' ')}>This is really working!</p>
-                <StyledButton
-                    ext={this.state.showPersons}
-                    onClick={this.togglePersonsHandler}>Change Data</StyledButton>
+                <button className="button" onClick={this.togglePersonsHandler}>Change Data</button>
                 {persons}
             </div>
             //equivalent

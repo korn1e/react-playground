@@ -8,12 +8,15 @@ Setting class name dynamically:
 -> check App.css
 
 
-Styling with Styled package:
-- Install Styled package
+Styling with CSS Modules package:
+- Modify the project configuration
   ```sh
-  npm install --save styled-components
+  npm run eject
   ```
-- Define and use styled component
+  To extract configuration details to gain access to the config files
+  
+
+
 
 
 Reference  
