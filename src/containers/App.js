@@ -70,6 +70,7 @@ class App extends Component {
             // lower case 1st letter usually for reserved/internal component
             <div className={classes.App}>
                 <Cockpit
+                    title={this.props.appTitle}
                     showPersons={this.state.showPersons}
                     persons={this.state.persons}
                     clicked={this.togglePersonsHandler}/>
