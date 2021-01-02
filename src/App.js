@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Radium, {StyleRoot} from 'radium'; // StyleRoot for media queries support
-
+import styled from 'styled-components';
 import Person from './Person/Person';
+
+//styled way to define component (with props)
+const StyledButton = styled.button`
+    background-color: ${props => props.ext ? 'red' : 'green'};
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+    &:hover {
+        background-color: ${props => props.ext ? 'salmon' : 'lightgreen'};;
+        color: black;
+    }
+`;
 
 class App extends Component {
 
@@ -57,20 +70,6 @@ class App extends Component {
 
     render() {
 
-        const btnInlineStyle = {
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
-        // with Radium, you can now add pseudo selector
-
         let persons = null;
         if(this.state.showPersons){
             persons = (
@@ -85,11 +84,6 @@ class App extends Component {
                     })}
                 </div>
             );
-            btnInlineStyle.backgroundColor = 'red';
-            btnInlineStyle[':hover'] = {
-                backgroundColor: 'salmon',
-                    color: 'black'
-            }
         }
 
         const classNames = [];
@@ -103,21 +97,19 @@ class App extends Component {
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
-            // <StyleRoot> is required when using media queries
-            <StyleRoot>
-                <div className="App">
-                    <h1>Hi, I'm a react app</h1>
-                    <p className={classNames.join(' ')}>This is really working!</p>
-                    <button
-                        style={btnInlineStyle}
-                        onClick={this.togglePersonsHandler}>Change Data</button>
-                    {persons}
-                </div>
-            </StyleRoot>
+            //use the defined (styled) component, and pass argument
+            <div className="App">
+                <h1>Hi, I'm a react app</h1>
+                <p className={classNames.join(' ')}>This is really working!</p>
+                <StyledButton
+                    ext={this.state.showPersons}
+                    onClick={this.togglePersonsHandler}>Change Data</StyledButton>
+                {persons}
+            </div>
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
         );
     }
 }
 
-export default Radium(App);
+export default App;

@@ -1,25 +1,33 @@
 import React from "react";
-import Radium from 'radium';
-import './Person.css';
+import styled from 'styled-components';
+//import './Person.css';
+
+// styled way to define component
+const StyledDiv = styled.div`
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+    
+    @media (min-width: 1000px) {
+        width: '800px'
+    }
+`; // adjust the px values (@media) according to your monitor resolution to see the difference
 
 // functional based component
 const person = (props) => {
 
-    // adjust the px values according to your monitor resolution to see the difference
-    const inlinePersonStyle = {
-        '@media (min-width: 1000px)': {
-            width: '800px'
-        }
-    };
-
     return (
         // must return single root element
-        <div className="Person" style={inlinePersonStyle}>
+        //use the defined (styled) component
+        <StyledDiv>
             <p onClick={props.click}>I'm {props.name}, and I'm {props.age} years old</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
-        </div>
+        </StyledDiv>
     );
 };
 
-export default Radium(person);
+export default person;

@@ -8,13 +8,12 @@ Setting class name dynamically:
 -> check App.css
 
 
-Styling with Radium package:
-- Install Radium package
+Styling with Styled package:
+- Install Styled package
   ```sh
-  npm install --save radium
+  npm install --save styled-components
   ```
-- Add pseudo selector
-- Add media queries using StyleRoot
+- Define and use styled component
 
 
 Reference  
