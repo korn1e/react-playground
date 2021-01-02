@@ -26,7 +26,10 @@ Styling with CSS Modules package:
   ```  
 
   
-  
+### Notes
+When using react-script version 2.x:
+- No need to perform `npm run eject`
+- Use `<name>.module.css` as file name and import
 
 
 
