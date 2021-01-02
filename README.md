@@ -15,6 +15,9 @@ Styling with CSS Modules package:
   ```sh
   npm run eject
   ```
+  See `package.json` difference
+- Config files will be populated on `config` folder
+
   
   
 
