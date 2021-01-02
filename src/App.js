@@ -56,7 +56,8 @@ class App extends Component {
     }
 
     render() {
-        const btnClasses = [classes.Button];
+        //const btnClasses = [classes.Button];
+        let btnClasses = '';
 
         let persons = null;
         if(this.state.showPersons){
@@ -73,7 +74,8 @@ class App extends Component {
                 </div>
             );
 
-            btnClasses.push(classes.Red); // will add class Red -> matching class '.Button.Red' from 'App.css'
+            //btnClasses.push(classes.Red); // will add class Red -> matching class '.Button.Red' from 'App.css'
+            btnClasses = classes.Red; // will add class Red -> matching class '.Button.Red' from 'App.css'
         }
 
         const classNames = [];
@@ -90,9 +92,10 @@ class App extends Component {
             <div className={classes.App}>
                 <h1>Hi, I'm a react app</h1>
                 <p className={classNames.join(' ')}>This is really working!</p>
-                <button className={btnClasses.join(' ')} onClick={this.togglePersonsHandler}>Change Data</button>
+                <button className={btnClasses} onClick={this.togglePersonsHandler}>Change Data</button>
                 {persons}
             </div>
+            //<button className={btnClasses.join(' ')} onClick={this.togglePersonsHandler}>Change Data</button>
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
         );
