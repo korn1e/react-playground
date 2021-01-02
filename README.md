@@ -9,11 +9,13 @@ Setting class name dynamically:
 
 
 Styling with CSS Modules package:
-- Modify the project configuration
+- stop npm server
+- commit any changes (if using git)
+- Populate project configuration details to gain access to the config files
   ```sh
   npm run eject
   ```
-  To extract configuration details to gain access to the config files
+  
   
 
 
