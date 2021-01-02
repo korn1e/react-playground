@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import Radium, {StyleRoot} from 'radium'; // StyleRoot for media queries support
 
 import Person from './Person/Person';
 
@@ -58,11 +59,17 @@ class App extends Component {
 
         const btnInlineStyle = {
             backgroundColor: 'green',
+            color: 'white',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            ':hover': {
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
         };
+        // with Radium, you can now add pseudo selector
 
         let persons = null;
         if(this.state.showPersons){
@@ -79,6 +86,10 @@ class App extends Component {
                 </div>
             );
             btnInlineStyle.backgroundColor = 'red';
+            btnInlineStyle[':hover'] = {
+                backgroundColor: 'salmon',
+                    color: 'black'
+            }
         }
 
         const classNames = [];
@@ -92,18 +103,21 @@ class App extends Component {
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
-            <div className="App">
-                <h1>Hi, I'm a react app</h1>
-                <p className={classNames.join(' ')}>This is really working!</p>
-                <button
-                    style={btnInlineStyle}
-                    onClick={this.togglePersonsHandler}>Change Data</button>
-                {persons}
-            </div>
+            // <StyleRoot> is required when using media queries
+            <StyleRoot>
+                <div className="App">
+                    <h1>Hi, I'm a react app</h1>
+                    <p className={classNames.join(' ')}>This is really working!</p>
+                    <button
+                        style={btnInlineStyle}
+                        onClick={this.togglePersonsHandler}>Change Data</button>
+                    {persons}
+                </div>
+            </StyleRoot>
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
         );
     }
 }
 
-export default App;
+export default Radium(App);
