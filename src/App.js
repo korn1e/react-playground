@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
+import classes from './App.css';
 
 import Person from './Person/Person';
 
@@ -56,6 +56,7 @@ class App extends Component {
     }
 
     render() {
+        const btnClasses = [classes.Button];
 
         let persons = null;
         if(this.state.showPersons){
@@ -71,23 +72,25 @@ class App extends Component {
                     })}
                 </div>
             );
+
+            btnClasses.push(classes.Red); // will add class Red -> matching class '.Button.Red' from 'App.css'
         }
 
         const classNames = [];
         if(this.state.persons.length <= 2){
-            classNames.push('red'); // classNames = ['red']
+            classNames.push(classes.red); // classNames = ['red']
         }
         if(this.state.persons.length <= 1) {
-            classNames.push('bold'); // classNames = ['red', 'bold']
+            classNames.push(classes.bold); // classNames = ['red', 'bold']
         }
 
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
-            <div className="App">
+            <div className={classes.App}>
                 <h1>Hi, I'm a react app</h1>
                 <p className={classNames.join(' ')}>This is really working!</p>
-                <button className="button" onClick={this.togglePersonsHandler}>Change Data</button>
+                <button className={btnClasses.join(' ')} onClick={this.togglePersonsHandler}>Change Data</button>
                 {persons}
             </div>
             //equivalent

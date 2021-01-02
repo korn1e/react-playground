@@ -36,7 +36,7 @@
   font-weight: bold;
 }
 
-.button {
+.Button {
   background-color: green;
   color: white;
   font: inherit;
@@ -45,8 +45,14 @@
   cursor: pointer;
 
 }
+.Button:hover {
+  background-color: lightgreen;
+  color: black;
+}
 
-.button:hover {
-   background-color: lightgreen;
-   color: black;
- }
+.Button.Red {
+  background-color: red;
+}
+.Button.Red:hover {
+  background-color: salmon;
+}

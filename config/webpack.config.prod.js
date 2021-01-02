@@ -183,6 +183,8 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
+                        modules: true, // enable CSS module
+                        localIdentName: '[name]__[local]__[hash:base64:5]', //dynamically generate unique CSS class name
                       },
                     },
                     {

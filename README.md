@@ -17,6 +17,13 @@ Styling with CSS Modules package:
   ```
   See `package.json` difference
 - Config files will be populated on `config` folder
+- Edit `webpack.config.dev.js` and `webpack.config.prod.js`
+- Find keyword `loader: require.resolve('css-loader')`
+- Add following on `options` attribute
+  ```javascript
+  modules: true, // enable CSS module
+  localIdentName: '[name]__[local]__[hash:base64:5]', //dynamically generate unique CSS class name
+  ```  
 
   
   
