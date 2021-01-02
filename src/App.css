@@ -54,7 +54,7 @@
 }
 
 /* .Button.Red { */
-App button.Red {
+.App button.Red {
   background-color: red;
 }
 /* .Button.Red:hover { */
