@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import classes from './App.css';
 
-import Person from './Person/Person';
-
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
@@ -56,46 +56,25 @@ class App extends Component {
     }
 
     render() {
-        //const btnClasses = [classes.Button];
-        let btnClasses = '';
 
         let persons = null;
         if(this.state.showPersons){
-            persons = (
-                <div>
-                    { this.state.persons.map((person, index)=>{
-                        return <Person
-                            click={() => this.deletePersonHandler(index)}
-                            name={person.name}
-                            age={person.age}
-                            key={person.id}
-                            changed={(event) => this.nameChangeHandler(event, person.id)} />
-                    })}
-                </div>
-            );
-
-            //btnClasses.push(classes.Red); // will add class Red -> matching class '.Button.Red' from 'App.css'
-            btnClasses = classes.Red; // will add class Red -> matching class '.Button.Red' from 'App.css'
-        }
-
-        const classNames = [];
-        if(this.state.persons.length <= 2){
-            classNames.push(classes.red); // classNames = ['red']
-        }
-        if(this.state.persons.length <= 1) {
-            classNames.push(classes.bold); // classNames = ['red', 'bold']
+            persons = <Persons
+                        persons={this.state.persons}
+                        clicked={this.deletePersonHandler}
+                        changed={this.nameChangeHandler} />
         }
 
         return (
             // custom component should have capital 1st letter (naming conventional)
             // lower case 1st letter usually for reserved/internal component
             <div className={classes.App}>
-                <h1>Hi, I'm a react app</h1>
-                <p className={classNames.join(' ')}>This is really working!</p>
-                <button className={btnClasses} onClick={this.togglePersonsHandler}>Change Data</button>
+                <Cockpit
+                    showPersons={this.state.showPersons}
+                    persons={this.state.persons}
+                    clicked={this.togglePersonsHandler}/>
                 {persons}
             </div>
-            //<button className={btnClasses.join(' ')} onClick={this.togglePersonsHandler}>Change Data</button>
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
         );
