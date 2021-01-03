@@ -4,7 +4,7 @@ import classes from './Person.css';
 
 // functional based component
 const person = (props) => {
-
+    console.log('[Person.js] rendering...');
     return (
         // must return single root element
         <div className={classes.Person}>

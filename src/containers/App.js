@@ -7,6 +7,12 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        // any custom logic
+        console.log('[App.js] constructor');
+    }
+
     //built-in property
     state = {
         persons: [
@@ -17,6 +23,13 @@ class App extends Component {
         otherData: 'other value',
         showPersons: false
     };
+
+    static getDerivedStateFromProps(props, state){
+        // do any state modification if needed
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
+
 
     nameChangeHandler = (event, id) => {
         // equivalent to (java lambda): stream, find first, index
@@ -56,7 +69,7 @@ class App extends Component {
     }
 
     render() {
-
+        console.log('[App.js] render');
         let persons = null;
         if(this.state.showPersons){
             persons = <Persons
@@ -79,6 +92,15 @@ class App extends Component {
             //equivalent
             //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
         );
+    }
+
+    //DEPRECATED
+    //componentWillMount() {
+    //    console.log('[App.js] componentWillMount');
+    //}
+
+    componentDidMount() {
+        console.log('[App.js] componentDidMount');
     }
 }
 
