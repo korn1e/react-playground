@@ -8,7 +8,7 @@
 4. (render/update child component)
 5. componentDidMount()
 
-##Update (props change)
+##Update (props & state change)
 ### Lifecycle
 1. static getDerivedStateFromProps(props, state)
 2. shouldComponentUpdate(nextProps, nextState)

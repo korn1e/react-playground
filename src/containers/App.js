@@ -30,6 +30,11 @@ class App extends Component {
         return state;
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('[App.js] shouldComponentUpdate');
+        return true;
+    }
+
 
     nameChangeHandler = (event, id) => {
         // equivalent to (java lambda): stream, find first, index
@@ -101,6 +106,10 @@ class App extends Component {
 
     componentDidMount() {
         console.log('[App.js] componentDidMount');
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[App.js] componentDidUpdate');
     }
 }
 
