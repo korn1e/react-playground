@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
+
+    // useEffect(a, b)
+    //a: callback (function)
+    //b: DependencyList -> used to determine the callback execution based on update
+    useEffect(()=>{
+        console.log('[Cockpit.js] useEffect');
+        // you can do HTTP request for example
+    }, [props.persons]); // only be executed if persons object is updated (e.g. name change)
+
+    // you can use multiple useEffect
+    useEffect(()=>{
+        console.log('[Cockpit.js] useEffect XXX');
+        // you can do HTTP request for example
+    }, []); // example that useEffect will be executed once
+
 
     //const btnClasses = [classes.Button];
     let btnClasses = '';

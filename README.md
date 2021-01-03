@@ -1,4 +1,4 @@
-#Component lifecycle
+#Class-based Component lifecycle
 
 ##Creation
 ### Lifecycle
@@ -19,6 +19,14 @@
 
 ### Changes
 - convert Persons and Person component to **class** based
+
+
+#Functional-based Component lifecycle
+
+useEffect
+
+
+
 
 Reference  
 https://dillinger.io
